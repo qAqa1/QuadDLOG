@@ -12,7 +12,16 @@ find_package(Boost 1.75.0 REQUIRED)
 message(${Boost_INCLUDE_DIRS})
 
 # Add source to this project's executable.
-add_executable (QuadDLOG "QuadDLOG.cpp" "QuadDLOG.h")
+add_executable (QuadDLOG
+"QuadDLOG.cpp"
+"QuadDLOG.h"
+"TonelliShanks.cpp"
+"TonelliShanks.h"
+"MathsFunctions.cpp"
+"MathsFunctions.h"
+"GlobalDefine.cpp"
+"GlobalDefine.h"
+)
 target_link_libraries(QuadDLOG Boost::headers)
 
 # TODO: Add tests and install targets if needed.
