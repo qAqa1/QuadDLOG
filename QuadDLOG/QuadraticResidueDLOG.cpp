@@ -8,7 +8,7 @@ using namespace Math;
 
 boost::multiprecision::cpp_int ToRoot(boost::multiprecision::cpp_int val, boost::multiprecision::cpp_int twoPow)
 {
-    cpp_int two = static_cast<cpp_int>(2);
+    cpp_int two = 2;
     auto twoPart = (cpp_int)pow((int)two, (int)twoPow);
     //auto twoPart = std::pow(two, twoPow);
     auto primePart = FindBiggestPrimeNumInNum(twoPart, val);
