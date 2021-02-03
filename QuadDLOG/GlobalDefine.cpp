@@ -1,19 +1,7 @@
 #include "GlobalDefine.h"
 
-std::string ToString(roots r)
-{
-	std::stringstream ss;
+#include <functional>
 
-	if (r)
-	{
-		ss << "{" << r->first << ", " << r->second << "}";
-	}
-	else
-	{
-		ss << "ROOT_NOT_EXIST";
-	}
-
-	return ss.str();
-}
+std::string ToString(roots r) { return r ? ToString(r.value()) : "ROOT_NOT_EXIST"; }
 
 void Print(roots r) { std::cout << std::endl << ToString(r); }
