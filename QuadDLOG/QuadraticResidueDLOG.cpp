@@ -1,20 +1,16 @@
 #include "QuadraticResidueDLOG.h"
 #include "MathsFunctions.h"
-#include "ModuloComprasion.h"
-#include <cmath>   
+#include "ModuloComprasion.h" 
 
 using namespace boost::multiprecision;
 using namespace Math;
 
-boost::multiprecision::cpp_int ToRoot(boost::multiprecision::cpp_int val, boost::multiprecision::cpp_int twoPow)
+cpp_int ToRoot(cpp_int val, cpp_int twoPow)
 {
     cpp_int two = 2;
-    auto twoPart = (cpp_int)pow((int)two, (int)twoPow);
-    //auto twoPart = std::pow(two, twoPow);
+    cpp_int twoPart = powm(two, twoPow, val);
     auto primePart = FindBiggestPrimeNumInNum(twoPart, val);
-
     std::cout << "Степень двойки: " << twoPart << " Простое число: " << primePart;
-
     return twoPart * primePart;
 }
 

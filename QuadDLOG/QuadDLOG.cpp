@@ -45,7 +45,8 @@ int main()
     auto root = FindRoot(31, 15, 61);
 	std::cout << std::endl << "Корень: " << root;
 
-	//std::cout << ToRoot(2, 5) << std::endl;
+
+	//std::cout << boost::multiprecision::powm(boost::multiprecision::cpp_int(2), boost::multiprecision::cpp_int(10), boost::multiprecision::cpp_int(5)) << std::endl;
 	//std::cout << "end";
 	//system("pause");
 

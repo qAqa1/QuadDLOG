@@ -2,29 +2,7 @@
 
 // https://rosettacode.org/wiki/Tonelli-Shanks_algorithm
 
-//#include <iostream>
-
-
-//#include <optional>
-//#include <utility>
-//#include <algorithm>
-
 using namespace boost::multiprecision;
-
-//struct Solution
-//{
-//    cpp_int root1, root2;
-//    bool exists;
-//};
-//
-//struct Solution makeSolution(cpp_int root1, cpp_int root2, bool exists)
-//{
-//    struct Solution sol;
-//    sol.root1 = root1;
-//    sol.root2 = root2;
-//    sol.exists = exists;
-//    return sol;
-//}
 
 roots TonelliShanks(cpp_int n, cpp_int p)
 {
