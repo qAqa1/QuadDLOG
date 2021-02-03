@@ -7,10 +7,6 @@
 #include <iostream>
 #include <string>
 
-//using roots = std::optional<std::pair<boost::multiprecision::cpp_int, boost::multiprecision::cpp_int>>;
-using roots = std::optional<std::vector<boost::multiprecision::cpp_int>>;
-//#define MAKE_ROOT(root1, root2) std::make_optional(std::make_pair(root1, root2));
-#define MAKE_ROOT(...) std::make_optional(std::vector<boost::multiprecision::cpp_int>{__VA_ARGS__});
 
 template <typename T>
 std::string ToString(std::vector<T> v);
@@ -18,9 +14,8 @@ std::string ToString(std::vector<T> v);
 template <typename T>
 void Print(std::vector<T> v);
 
-
-std::string ToString(roots r);
-void Print(roots r);
+template <typename T>
+void PrintLine(std::vector<T> v);
 
 
 template<typename T>

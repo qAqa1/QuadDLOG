@@ -19,8 +19,12 @@ add_executable (QuadDLOG
 "TonelliShanks.h"
 "MathsFunctions.cpp"
 "MathsFunctions.h"
-"GlobalDefine.cpp"
-"GlobalDefine.h"
+"Util.h"
+"Util.cpp"
+"QuadraticResidueDLOG.h"
+"QuadraticResidueDLOG.cpp"
+"Root.h"
+"Root.cpp"
 )
 target_link_libraries(QuadDLOG Boost::headers)
 

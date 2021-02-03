@@ -3,6 +3,9 @@
 
 #include "QuadDLOG.h"
 #include "TonelliShanks.h"
+#include "Util.h"
+#include "Root.h"
+
 
 //#include <boost/multiprecision/cpp_int.hpp>
 //#include <boost/math/special_functions/prime.hpp>
