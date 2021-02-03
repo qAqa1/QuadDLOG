@@ -5,12 +5,16 @@
 #include "TonelliShanks.h"
 #include "Util.h"
 #include "Root.h"
+#include "MathsFunctions.h"
+#include "QuadraticResidueDLOG.h"
 
 
 //#include <boost/multiprecision/cpp_int.hpp>
 //#include <boost/math/special_functions/prime.hpp>
 //#include <boost/multiprecision/miller_rabin.hpp>
 //#include <iomanip>
+
+#include <iostream>
 
 using namespace std;
 
@@ -32,8 +36,24 @@ int main()
 	////cpp_int x = boost::multiprecision::powm(1, 1, 1);
 	
 
-	using namespace boost::multiprecision;
-	auto res = TonelliShanks(5, 61);
-	Print(res);
+	//using namespace boost::multiprecision;
+	//auto res = TonelliShanks(5, 61);
+	//Print(res);
+
+	setlocale(LC_ALL, "Russian");
+
+    auto root = FindRoot(31, 15, 61);
+	std::cout << std::endl << "Корень: " << root;
+
+	//std::cout << ToRoot(2, 5) << std::endl;
+	//std::cout << "end";
+	//system("pause");
+
+	//auto val = Math::FindBiggestPrimeNumInNum(3, 100);
+	//auto val = Math::NextPrimeNum(7);
+	//std::cout << val << std::endl;
+	//std::cout << "end";
+	////system("pause");
+
 	return 0;
 }

@@ -13,18 +13,20 @@ message(${Boost_INCLUDE_DIRS})
 
 # Add source to this project's executable.
 add_executable (QuadDLOG
-"QuadDLOG.cpp"
 "QuadDLOG.h"
-"TonelliShanks.cpp"
+"QuadDLOG.cpp"
 "TonelliShanks.h"
-"MathsFunctions.cpp"
+"TonelliShanks.cpp"
 "MathsFunctions.h"
+"MathsFunctions.cpp"
 "Util.h"
 "Util.cpp"
 "QuadraticResidueDLOG.h"
 "QuadraticResidueDLOG.cpp"
 "Root.h"
 "Root.cpp"
+"ModuloComprasion.h"
+"ModuloComprasion.cpp"
 )
 target_link_libraries(QuadDLOG Boost::headers)
 

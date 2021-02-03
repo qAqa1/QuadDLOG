@@ -1,7 +1,9 @@
 #include "MathsFunctions.h"
 
-#include <boost/math/special_functions/prime.hpp>
+//#include <boost/math/special_functions/prime.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
+
+#include <utility>
 
 using namespace boost::multiprecision;
 using namespace boost::random;
@@ -13,3 +15,36 @@ namespace
 }
 
 bool Math::IsPrime(boost::multiprecision::cpp_int test) { return miller_rabin_test(test, Math::MILLER_RABIN_TEST_COUNT, gen); }
+
+boost::multiprecision::cpp_int Math::FindBiggest2DeegreeInNum(cpp_int num)
+{
+    cpp_int two = 2;
+    auto powResult = two;
+    while (powResult * two <= num)
+    {
+        powResult *= two;
+    }
+    return powResult;
+}
+
+cpp_int Math::NextPrimeNum(cpp_int primeNum)
+{
+    do
+    {
+        primeNum++;
+    } while (!IsPrime(primeNum));
+
+    return primeNum;
+}
+
+cpp_int Math::FindBiggestPrimeNumInNum(cpp_int factor, cpp_int maxValue)
+{
+    cpp_int primeNum     = 1,
+            prevPrimeNum = 1;
+
+    while (true)
+    {
+        if (primeNum * factor > maxValue) return prevPrimeNum;
+        prevPrimeNum = std::exchange(primeNum, NextPrimeNum(primeNum));
+    }
+}
