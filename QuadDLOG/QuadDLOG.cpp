@@ -42,9 +42,14 @@ int main()
 
 	setlocale(LC_ALL, "Russian");
 
-    auto root = FindRoot(31, 15, 61);
+    //auto root = FindRoot(41, 15, 7);
+    auto root = FindRoot(54696545758787, 100001, 70606432933607);
+    //auto root = FindRoot(31, 15, 61);
 	std::cout << std::endl << "Корень: " << root;
 
+
+	//std::cout << ToRoot(2, 5) << std::endl;
+	//std::cout << "end";
 
 	//std::cout << boost::multiprecision::powm(boost::multiprecision::cpp_int(2), boost::multiprecision::cpp_int(10), boost::multiprecision::cpp_int(5)) << std::endl;
 	//std::cout << "end";

@@ -48,3 +48,15 @@ cpp_int Math::FindBiggestPrimeNumInNum(cpp_int factor, cpp_int maxValue)
         prevPrimeNum = std::exchange(primeNum, NextPrimeNum(primeNum));
     }
 }
+
+cpp_int Math::Pow(cpp_int num, cpp_int pow)
+{
+    if (pow == 0)
+        return 1;
+    else if (pow == 1)
+        return num;
+    else if (pow % 2 == 0)
+        return Pow(num * num, pow / 2);
+    else
+        return Pow(num * num, pow / 2) * num;
+}

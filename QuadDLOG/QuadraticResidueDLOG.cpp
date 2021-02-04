@@ -8,7 +8,8 @@ using namespace Math;
 cpp_int ToRoot(cpp_int val, cpp_int twoPow)
 {
     cpp_int two = 2;
-    cpp_int twoPart = powm(two, twoPow, val);
+    //cpp_int twoPart = powm(two, twoPow, val);
+    cpp_int twoPart = Pow(two, twoPow);
     auto primePart = FindBiggestPrimeNumInNum(twoPart, val);
     std::cout << "Степень двойки: " << twoPart << " Простое число: " << primePart;
     return twoPart * primePart;
@@ -44,14 +45,15 @@ boost::multiprecision::cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
     {
         //if (level > 6) return -1;
 
+        levelData = CalcLevel(levelData, p);
+
         std::cout << "level = " << level++ << ":";
         for (auto val : levelData)
         {
             std::cout << " " << val;
         }
         std::cout << std::endl;
-
-        levelData = CalcLevel(levelData, p);
+        
         auto it = std::find(std::begin(all_levels), std::end(all_levels), levelData);
         if (it != std::end(all_levels))
         {
@@ -81,6 +83,6 @@ boost::multiprecision::cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
         all_levels.push_back(levelData);
     }
 
-    std::cout << "При n = " << n << " и " << " p = " << p << " нет корней";
+    std::cout << "При n = " << n << " и p = " << p << " нет корней";
     return -1;
 }
