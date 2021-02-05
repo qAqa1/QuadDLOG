@@ -34,10 +34,10 @@ res_container CalcLevel(res_container n_values, cpp_int p)
     return next_level_data;
 }
 
-boost::multiprecision::cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
+cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
 {
     std::cout << g << "^x = " << n << "(mod " << p << ")" << std::endl;
-    int level = 0;
+    cpp_int level = 0;
     level_data all_levels;
     res_container levelData = { n };
 
