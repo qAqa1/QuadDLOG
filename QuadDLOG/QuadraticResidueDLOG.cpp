@@ -24,6 +24,7 @@ res_container CalcLevel(res_container n_values, cpp_int p, int degree)
     for (auto n : n_values)
     {
         //std::cout << std::endl << "p в CalcLevel = " << p << std::endl;
+        //std::cout << std::endl << "degree в CalcLevel = " << degree << std::endl;
         auto res = ModuloComprasion(degree, n, p);
         if (res)
         {
@@ -66,9 +67,10 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, 
             return std::nullopt;
         }
 
-        if (std::find(std::begin(levelData), std::end(levelData), n) != std::end(levelData))
-        {
-            std::cout << "Содержит " << n << ". Проверка уровня:";
+        //if (std::find(std::begin(levelData), std::end(levelData), n) != std::end(levelData))
+        //{
+            //std::cout << "Содержит " << n << ". Проверка уровня:";
+            std::cout << "Проверка уровня:";
             for (auto val : levelData)
             {
                 std::cout << std::endl << "Значение: " << val << std::endl;
@@ -81,7 +83,7 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, 
             }
 
             std::cout << std::endl;
-        }
+        //}
 
         all_levels.push_back(levelData);
     }
@@ -98,12 +100,13 @@ std::optional<cpp_int> FindRoot(cpp_int g, cpp_int n, cpp_int p)
 
     while (true)
     {
+        std::cout << "______________________________________________________" << std::endl;
         std::cout << "Рассчет " << prime << " степени:" << std::endl;
         auto possibleRoot = CalcDegree(prime, g, n, p);
-        if (possibleRoot.has_value()) return possibleRoot;
+        if (possibleRoot) return possibleRoot;
         prime = NextPrimeInt(prime);
         std::cout << std::endl << std::endl;
     }
 
-    //return CalcDegree(7, g, n, p);
+    //return CalcDegree(5, g, n, p);
 }
