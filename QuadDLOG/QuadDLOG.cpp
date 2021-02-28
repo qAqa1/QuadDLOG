@@ -44,12 +44,12 @@ int main()
 	//auto res = TonelliShanks(5, 61);
 	//Print(res);
 
-	//setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "Russian");
 
  //   //auto root = FindRoot(41, 15, 7);
  //   //auto root = FindRoot(54696545758787, 100001, 70606432933607);
- //   auto root = FindRoot(31, 15, 61);
-	//std::cout << std::endl << "Корень: " << root;
+    auto root = FindRoot(31, 15, 61);
+	std::cout << std::endl << "Корень: " << root;
 
 
 
@@ -64,18 +64,18 @@ int main()
 	//	cout << p.second << " " << p.first << " | " << p.first.DebugDescription() << endl;
 	//}
 
-	int a = 15;
+	//int a = 15;
 
-	auto rez = CantorCantorModularComprassion(2, a, 61);
+	//auto rez = CantorCantorModularComprassion(2, a, 61);
 
-	for (auto num : rez) {
-		cout << num << std::endl;
-	}
+	//for (auto num : rez) {
+	//	cout << num << std::endl;
+	//}
 
-	std::cout << "---------------";
+	//std::cout << "---------------";
 
-	auto res = TonelliShanks(a, 61);
-	Print(res);
+	//auto res = TonelliShanks(a, 61);
+	//Print(res);
 
 	//std::cout << ToRoot(2, 5) << std::endl;
 	//std::cout << "end";
