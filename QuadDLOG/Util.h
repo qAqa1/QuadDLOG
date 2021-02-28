@@ -23,7 +23,7 @@ inline std::string ToString(std::vector<T> v)
 {
 	std::stringstream ss;
 	if (v.size() == 0) return "{}";
-	ss << "{" << v[0];
+	ss << "{" << v.front();
 	std::for_each(std::begin(v) + 1, std::end(v), [&ss](T val) { ss << ", " << val; });
 	ss << "}";
 	return ss.str();

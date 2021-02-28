@@ -27,6 +27,10 @@ add_executable (QuadDLOG
 "Root.cpp"
 "ModuloComprasion.h"
 "ModuloComprasion.cpp"
+"CantorZassenhaus.h"
+"CantorZassenhaus.cpp"
+"Polynomial.h"
+"Polynomial.cpp"
 )
 target_link_libraries(QuadDLOG Boost::headers)
 
