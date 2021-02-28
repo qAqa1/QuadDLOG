@@ -66,7 +66,7 @@ int main()
 
 	//int a = 15;
 
-	//auto rez = CantorCantorModularComprassion(2, a, 61);
+	//auto rez = CantorModularComprassion(2, a, 61);
 
 	//for (auto num : rez) {
 	//	cout << num << std::endl;

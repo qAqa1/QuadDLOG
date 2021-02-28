@@ -121,7 +121,7 @@ std::vector<Polynomial> FactorSquareFree(const Polynomial& poly, const boost::mu
     return result;
 }
 
-std::vector<boost::multiprecision::cpp_int> CantorCantorModularComprassion(int n, boost::multiprecision::cpp_int a, boost::multiprecision::cpp_int p)
+std::vector<boost::multiprecision::cpp_int> CantorModularComprassion(int n, boost::multiprecision::cpp_int a, boost::multiprecision::cpp_int p)
 {
     if (a >= p || a < 0)
     {
