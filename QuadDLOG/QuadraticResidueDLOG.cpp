@@ -17,26 +17,29 @@ cpp_int ToRoot(cpp_int val, cpp_int twoPow)
 
 bool CheckRoot(cpp_int g, cpp_int n, cpp_int p, cpp_int root) { return powm(g, root, p) == n; }
 
-res_container CalcLevel(res_container n_values, cpp_int p)
+res_container CalcLevel(res_container n_values, cpp_int p, int degree)
 {
     res_container next_level_data;
 
     for (auto n : n_values)
     {
-        auto res = ModuloComprasion(n, p);
+        //std::cout << std::endl << "p в CalcLevel = " << p << std::endl;
+        auto res = ModuloComprasion(degree, n, p);
         if (res)
         {
-            next_level_data.push_back(res.value()[0]);
-            next_level_data.push_back(res.value()[1]);
+            auto roots = res.value();
+            for (const auto &root : roots)
+            {
+                next_level_data.push_back(root);
+            }        
         }
     }
 
     return next_level_data;
 }
 
-cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
+std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, cpp_int n, cpp_int p)
 {
-    std::cout << g << "^x = " << n << "(mod " << p << ")" << std::endl;
     cpp_int level = 0;
     level_data all_levels;
     res_container levelData = { n };
@@ -45,7 +48,7 @@ cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
     {
         //if (level > 6) return -1;
 
-        levelData = CalcLevel(levelData, p);
+        levelData = CalcLevel(levelData, p, degree);
 
         std::cout << "level = " << level++ << ":";
         for (auto val : levelData)
@@ -53,14 +56,14 @@ cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
             std::cout << " " << val;
         }
         std::cout << std::endl;
-        
+
         auto it = std::find(std::begin(all_levels), std::end(all_levels), levelData);
         if (it != std::end(all_levels))
         {
             std::cout << "Следующий уровень: ";
             for (auto num : levelData) { std::cout << num << " "; }
             std::cout << " является повторением уровня " << std::distance(std::begin(all_levels), it) + 1;
-            return -1;
+            return std::nullopt;
         }
 
         if (std::find(std::begin(levelData), std::end(levelData), n) != std::end(levelData))
@@ -73,7 +76,7 @@ cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
                 std::cout << std::endl << "Корень: " << possibleRoot;
                 auto checkResult = CheckRoot(g, n, p, possibleRoot);
                 std::cout << std::endl << "Проверка корня: " << (checkResult ? "Подходит" : "Не подходит");
-                if (checkResult) return possibleRoot;
+                if (checkResult) return std::make_optional(possibleRoot);
                 std::cout << std::endl << "--------------------------------";
             }
 
@@ -83,6 +86,24 @@ cpp_int FindRoot(cpp_int g, cpp_int n, cpp_int p)
         all_levels.push_back(levelData);
     }
 
-    std::cout << "При n = " << n << " и p = " << p << " нет корней";
-    return -1;
+    std::cout << "Когда степень равна " << degree << ", при n = " << n << " и p = " << p << " нет корней";
+    return std::nullopt;
+}
+
+std::optional<cpp_int> FindRoot(cpp_int g, cpp_int n, cpp_int p)
+{
+    std::cout << g << "^x = " << n << "(mod " << p << ")" << std::endl;
+
+    int prime = 2;
+
+    while (true)
+    {
+        std::cout << "Рассчет " << prime << " степени:" << std::endl;
+        auto possibleRoot = CalcDegree(prime, g, n, p);
+        if (possibleRoot.has_value()) return possibleRoot;
+        prime = NextPrimeInt(prime);
+        std::cout << std::endl << std::endl;
+    }
+
+    //return CalcDegree(7, g, n, p);
 }

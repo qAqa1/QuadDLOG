@@ -2,4 +2,4 @@
 
 #include "Root.h"
 
-roots ModuloComprasion(boost::multiprecision::cpp_int n, boost::multiprecision::cpp_int p);
+roots ModuloComprasion(int n, boost::multiprecision::cpp_int a, boost::multiprecision::cpp_int p);

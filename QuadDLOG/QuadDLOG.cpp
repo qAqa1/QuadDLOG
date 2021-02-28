@@ -46,10 +46,18 @@ int main()
 
 	setlocale(LC_ALL, "Russian");
 
- //   //auto root = FindRoot(41, 15, 7);
- //   //auto root = FindRoot(54696545758787, 100001, 70606432933607);
-    auto root = FindRoot(31, 15, 61);
-	std::cout << std::endl << "Корень: " << root;
+	//auto root = FindRoot(41, 15, 7);
+	//auto root = FindRoot(54696545758787, 100001, 70606432933607);
+	auto root = FindRoot(3, 13, 17);
+	//auto root = FindRoot(31, 15, 61);
+	if (root)
+		std::cout << std::endl << "Корень: " << root.value();
+
+	//auto rez = CantorCalcModularComprassionRaw(3, 4, 7);
+
+	//for (auto num : rez) {
+	//	cout << num << std::endl;
+	//}
 
 
 
@@ -66,7 +74,7 @@ int main()
 
 	//int a = 15;
 
-	//auto rez = CantorModularComprassion(2, a, 61);
+	//auto rez = CantorModularComprassionRaw(2, a, 61);
 
 	//for (auto num : rez) {
 	//	cout << num << std::endl;

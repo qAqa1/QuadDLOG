@@ -1,4 +1,5 @@
 #include "MathsFunctions.h"
+#include "MathsFunctions.h"
 
 //#include <boost/math/special_functions/prime.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
@@ -28,6 +29,16 @@ boost::multiprecision::cpp_int Math::FindBiggest2DeegreeInNum(cpp_int num)
 }
 
 cpp_int Math::NextPrimeNum(cpp_int primeNum)
+{
+    do
+    {
+        primeNum++;
+    } while (!IsPrime(primeNum));
+
+    return primeNum;
+}
+
+int Math::NextPrimeInt(int primeNum)
 {
     do
     {
