@@ -10,8 +10,6 @@
 #include <boost/integer/mod_inverse.hpp>
 #include <boost/algorithm/string.hpp>
 
-#include "Util.h"
-
 Polynomial::Polynomial(std::string str)
 {
 	std::vector<std::string> monoms_string;
