@@ -19,57 +19,84 @@ bool Math::IsPrime(boost::multiprecision::cpp_int test) { return miller_rabin_te
 
 boost::multiprecision::cpp_int Math::FindBiggest2DeegreeInNum(cpp_int num)
 {
-    cpp_int two = 2;
-    auto powResult = two;
-    while (powResult * two <= num)
-    {
-        powResult *= two;
-    }
-    return powResult;
+	cpp_int two = 2;
+	auto powResult = two;
+	while (powResult * two <= num)
+	{
+		powResult *= two;
+	}
+	return powResult;
+}
+
+boost::multiprecision::cpp_int Math::PrevPrimeNum(boost::multiprecision::cpp_int primeNum)
+{
+	if (primeNum == 2) return 1;
+	if (primeNum == 1) return 1;
+
+	do
+	{
+		primeNum--;
+	} while (!IsPrime(primeNum));
+
+	return primeNum;
 }
 
 cpp_int Math::NextPrimeNum(cpp_int primeNum)
 {
-    do
-    {
-        primeNum++;
-    } while (!IsPrime(primeNum));
+	do
+	{
+		primeNum++;
+	} while (!IsPrime(primeNum));
 
-    return primeNum;
+	return primeNum;
 }
 
 int Math::NextPrimeInt(int primeNum)
 {
-    do
-    {
-        primeNum++;
-    } while (!IsPrime(primeNum));
+	do
+	{
+		primeNum++;
+	} while (!IsPrime(primeNum));
 
-    return primeNum;
+	return primeNum;
 }
 
 cpp_int Math::FindBiggestPrimeNumInNum(cpp_int factor, cpp_int maxValue)
 {
-    cpp_int primeNum     = 1,
-            prevPrimeNum = 1;
+	std::cout << "factor = " << factor << ", maxValue = " << maxValue;
 
-    while (true)
-    {
-        if (primeNum * factor > maxValue) return prevPrimeNum;
-        prevPrimeNum = std::exchange(primeNum, NextPrimeNum(primeNum));
-    }
+	//cpp_int primeNum     = 1,
+	//        prevPrimeNum = 1;
+
+	//while (true)
+	//{
+	//    if (primeNum * factor > maxValue) return prevPrimeNum;
+	//    prevPrimeNum = std::exchange(primeNum, NextPrimeNum(primeNum));
+	//}
+
+
+	if (maxValue == 1) return 1;
+
+	cpp_int val = IsPrime(maxValue) ? maxValue : PrevPrimeNum(maxValue);
+
+	while (true)
+	{
+		if (val % factor == 0) return val;
+		val = PrevPrimeNum(val);
+		if (val == 1) return 1;
+	}
 }
 
 cpp_int Math::Pow(cpp_int num, cpp_int pow)
 {
-    return boost::multiprecision::pow(num, static_cast<int>(pow));
+	return boost::multiprecision::pow(num, static_cast<int>(pow));
 
-    //if (pow == 0)
-    //    return 1;
-    //else if (pow == 1)
-    //    return num;
-    //else if (pow % 2 == 0)
-    //    return Pow(num * num, pow / 2);
-    //else
-    //    return Pow(num * num, pow / 2) * num;
+	//if (pow == 0)
+	//    return 1;
+	//else if (pow == 1)
+	//    return num;
+	//else if (pow % 2 == 0)
+	//    return Pow(num * num, pow / 2);
+	//else
+	//    return Pow(num * num, pow / 2) * num;
 }

@@ -8,6 +8,7 @@ namespace Math
 
 	bool IsPrime(boost::multiprecision::cpp_int test);
     boost::multiprecision::cpp_int FindBiggest2DeegreeInNum(boost::multiprecision::cpp_int num);
+    boost::multiprecision::cpp_int PrevPrimeNum(boost::multiprecision::cpp_int primeNum);
     boost::multiprecision::cpp_int NextPrimeNum(boost::multiprecision::cpp_int primeNum);
     int NextPrimeInt(int primeNum);
     boost::multiprecision::cpp_int FindBiggestPrimeNumInNum(boost::multiprecision::cpp_int factor, boost::multiprecision::cpp_int maxValue);

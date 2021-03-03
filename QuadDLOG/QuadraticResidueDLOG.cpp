@@ -108,5 +108,5 @@ std::optional<cpp_int> FindRoot(cpp_int g, cpp_int n, cpp_int p)
         std::cout << std::endl << std::endl;
     }
 
-    //return CalcDegree(5, g, n, p);
+    //return CalcDegree(3, g, n, p);
 }
