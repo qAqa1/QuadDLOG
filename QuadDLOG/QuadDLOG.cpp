@@ -49,15 +49,11 @@ int main()
 	//auto root = FindRoot(41, 15, 7);
 
 
-	auto root = FindRoot(54696545758787, 100001, 70606432933607);
+	//auto root = FindRoot(54696545758787, 100001, 70606432933607);
 	//auto root = FindRoot(3, 13, 17);
 	//auto root = FindRoot(31, 15, 61);
-
 	//auto root = FindRoot(27, 520, 547);
-
-	//std::cout << Math::PrevPrimeNum(1);
-
-	//auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
+	auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
 	if (root)
 		std::cout << std::endl << "Корень: " << root.value();
 

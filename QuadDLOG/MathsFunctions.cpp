@@ -3,8 +3,10 @@
 
 //#include <boost/math/special_functions/prime.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
+#include <boost/math/common_factor.hpp>
 
 #include <utility>
+
 
 using namespace boost::multiprecision;
 using namespace boost::random;
@@ -63,7 +65,20 @@ int Math::NextPrimeInt(int primeNum)
 
 cpp_int Math::FindBiggestPrimeNumInNum(cpp_int factor, cpp_int maxValue)
 {
-	std::cout << "factor = " << factor << ", maxValue = " << maxValue;
+	//std::cout << "factor = " << factor << ", maxValue = " << maxValue;
+
+	cpp_int val    = boost::math::lcm(factor, maxValue), // наименьшее общее кратное
+		    preVal = 1;
+
+	while (true)
+	{
+		if (val * factor > maxValue) return preVal;
+
+		if (IsPrime(val)) preVal = val;
+		val = val * factor;
+		//preVal = std::exchange(val, val * factor);
+	}
+
 
 	//cpp_int primeNum     = 1,
 	//        prevPrimeNum = 1;
@@ -75,16 +90,19 @@ cpp_int Math::FindBiggestPrimeNumInNum(cpp_int factor, cpp_int maxValue)
 	//}
 
 
-	if (maxValue == 1) return 1;
+	//if (maxValue == 1) return 1;
 
-	cpp_int val = IsPrime(maxValue) ? maxValue : PrevPrimeNum(maxValue);
+	//cpp_int val = IsPrime(maxValue) ? maxValue : PrevPrimeNum(maxValue);
 
-	while (true)
-	{
-		if (val % factor == 0) return val;
-		val = PrevPrimeNum(val);
-		if (val == 1) return 1;
-	}
+	//while (true)
+	//{
+	//	if (val % factor == 0) return val;
+	//	
+	//	if (factor < )
+
+	//	val = PrevPrimeNum(val);
+	//	if (val == 1) return 1;
+	//}
 }
 
 cpp_int Math::Pow(cpp_int num, cpp_int pow)
