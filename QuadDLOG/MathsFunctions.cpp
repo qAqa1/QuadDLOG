@@ -67,15 +67,35 @@ cpp_int Math::FindBiggestPrimeNumInNum(cpp_int factor, cpp_int maxValue)
 {
 	//std::cout << "factor = " << factor << ", maxValue = " << maxValue;
 
-	cpp_int val    = boost::math::lcm(factor, maxValue), // наименьшее общее кратное
-		    preVal = 1;
+	//cpp_int val    = boost::math::lcm(factor, maxValue), // наименьшее общее кратное
+	//cpp_int val    = factor, // наименьшее общее кратное
+	//	    preVal = 1;
+
+	//while (true)
+	//{
+	//	if (val * factor > maxValue) return preVal;
+
+	//	auto temp = val / factor;
+	//	//std::cout << "temp = " << temp;
+	//	if (IsPrime(temp)) preVal = temp;
+	//	val = val * factor;
+	//	//preVal = std::exchange(val, val * factor);
+	//}
+
+
+	cpp_int val = factor,
+		calcNum = 1,
+		preVal = 1;
 
 	while (true)
 	{
-		if (val * factor > maxValue) return preVal;
+		if (val + factor > maxValue) return preVal;
 
-		if (IsPrime(val)) preVal = val;
-		val = val * factor;
+		calcNum++;
+		//std::cout << "temp = " << temp;
+		if (IsPrime(calcNum)) preVal = calcNum;
+		//val = val * factor;
+		val = val + factor;
 		//preVal = std::exchange(val, val * factor);
 	}
 
