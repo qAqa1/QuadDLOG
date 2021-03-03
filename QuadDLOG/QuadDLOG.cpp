@@ -22,27 +22,26 @@
 using namespace std;
 using namespace Math;
 
+//int PrevPrimeNumTest(int primeNum)
+//{
+//	if (primeNum == 2) return 1;
+//	if (primeNum == 1) return 1;
+//
+//	do
+//	{
+//		primeNum--;
+//	} while (!IsPrime(primeNum));
+//
+//	return primeNum;
+//}
+//
 //int FindBiggestPrimeNumInNumTest(int factor, int maxValue)
 //{
-//	//std::cout << "factor = " << factor << ", maxValue = " << maxValue;
+//	auto del = maxValue / factor;
+//	if (del == 0) return 1;
 //
-//	//cpp_int val    = boost::math::lcm(factor, maxValue), // наименьшее общее кратное
-//	int val = factor,
-//		calcNum = 1,
-//		preVal = 1;
-//
-//	while (true)
-//	{
-//		if (val + factor > maxValue) return preVal;
-//
-//		calcNum++;
-//		//std::cout << "temp = " << temp;
-//		if (IsPrime(calcNum)) preVal = calcNum;
-//		//val = val * factor;
-//		val = val + factor;
-//		cout << "val = " << val << ", calcNum = " << calcNum << ", preVal = " << preVal << endl;
-//		//preVal = std::exchange(val, val * factor);
-//	}
+//	if (Is)
+//	return PrevPrimeNumTest(del);
 //}
 
 int main()
@@ -72,13 +71,13 @@ int main()
 
 	//auto root = FindRoot(41, 15, 7);
 
-	//auto primePart = FindBiggestPrimeNumInNumTest(2, 21);
+	//auto primePart = FindBiggestPrimeNumInNum(4, 21);
 	//cout << primePart;
-	auto root = FindRoot(54696545758787, 100001, 70606432933607);
-	////auto root = FindRoot(3, 13, 17);
+	//auto root = FindRoot(54696545758787, 100001, 70606432933607);
+	//auto root = FindRoot(3, 13, 17);
 	//auto root = FindRoot(31, 15, 61);
-	////auto root = FindRoot(27, 520, 547);
-	//auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
+	//auto root = FindRoot(27, 520, 547);
+	auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
 	if (root)
 		std::cout << std::endl << "Корень: " << root.value();
 

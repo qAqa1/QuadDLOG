@@ -82,22 +82,26 @@ cpp_int Math::FindBiggestPrimeNumInNum(cpp_int factor, cpp_int maxValue)
 	//	//preVal = std::exchange(val, val * factor);
 	//}
 
+	auto del = maxValue / factor;
+	if (del == 0) return 1;
+	if (IsPrime(del)) return del;
+	return PrevPrimeNum(del);
 
-	cpp_int val = factor,
-		calcNum = 1,
-		preVal = 1;
+	//cpp_int val = factor,
+	//	calcNum = 1,
+	//	preVal = 1;
 
-	while (true)
-	{
-		if (val + factor > maxValue) return preVal;
+	//while (true)
+	//{
+	//	if (val + factor > maxValue) return preVal;
 
-		calcNum++;
-		//std::cout << "temp = " << temp;
-		if (IsPrime(calcNum)) preVal = calcNum;
-		//val = val * factor;
-		val = val + factor;
-		//preVal = std::exchange(val, val * factor);
-	}
+	//	calcNum++;
+	//	//std::cout << "temp = " << temp;
+	//	if (IsPrime(calcNum)) preVal = calcNum;
+	//	//val = val * factor;
+	//	val = val + factor;
+	//	//preVal = std::exchange(val, val * factor);
+	//}
 
 
 	//cpp_int primeNum     = 1,
