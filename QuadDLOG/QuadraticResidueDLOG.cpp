@@ -53,10 +53,13 @@ res_container CalcLevel(res_container n_values, cpp_int p, int degree)
 
 				std::lock_guard<std::mutex> guard(m);
 
-				for (const auto& root : roots)
-				{
-					next_level_data.push_back(root);
-				}
+				//for (const auto& root : roots)
+				//{
+				//	next_level_data.push_back(root);
+				//}
+
+				//next_level_data.insert(std::end(next_level_data), std::begin(roots), std::end(roots));
+				std::copy(std::begin(roots), std::end(roots), std::back_inserter(next_level_data));
 			}
 		});
 
@@ -99,6 +102,7 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, 
 		{
 			std::cout << std::endl << "Значение: " << val << std::endl;
 			auto possibleRoot = ToRoot(val, level);
+			possibleRoot = possibleRoot % p;
 			std::cout << std::endl << "Корень: " << possibleRoot;
 			auto checkResult = CheckRoot(g, n, p, possibleRoot);
 			std::cout << std::endl << "Проверка корня: " << (checkResult ? "Подходит" : "Не подходит");
