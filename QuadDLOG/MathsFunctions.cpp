@@ -3,7 +3,7 @@
 
 //#include <boost/math/special_functions/prime.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
-#include <boost/math/common_factor.hpp>
+//#include <boost/math/common_factor.hpp>
 
 #include <utility>
 

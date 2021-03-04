@@ -1,6 +1,9 @@
+//#include <algorithm>
+#include <execution>
+
 #include "QuadraticResidueDLOG.h"
 #include "MathsFunctions.h"
-#include "ModuloComprasion.h" 
+#include "ModuloComprasion.h"
 
 using namespace boost::multiprecision;
 using namespace Math;
@@ -17,24 +20,45 @@ cpp_int ToRoot(cpp_int val, cpp_int twoPow)
 
 bool CheckRoot(cpp_int g, cpp_int n, cpp_int p, cpp_int root) { return powm(g, root, p) == n; }
 
+namespace
+{
+	std::mutex m;;
+}
+
 res_container CalcLevel(res_container n_values, cpp_int p, int degree)
 {
 	res_container next_level_data;
 
-	for (auto& n : n_values)
-	{
-		//std::cout << std::endl << "p â CalcLevel = " << p << std::endl;
-		//std::cout << std::endl << "degree â CalcLevel = " << degree << std::endl;
-		auto res = ModuloComprasion(degree, n, p);
-		if (res)
+	//for (auto& n : n_values)
+	//{
+	//	//std::cout << std::endl << "p â CalcLevel = " << p << std::endl;
+	//	//std::cout << std::endl << "degree â CalcLevel = " << degree << std::endl;
+	//	auto res = ModuloComprasion(degree, n, p);
+	//	if (res)
+	//	{
+	//		auto roots = res.value();
+	//		for (const auto& root : roots)
+	//		{
+	//			next_level_data.push_back(root);
+	//		}
+	//	}
+	//}
+
+	std::for_each(std::execution::par, std::begin(n_values), std::end(n_values), [&](boost::multiprecision::cpp_int n)
 		{
-			auto roots = res.value();
-			for (const auto& root : roots)
+			auto res = ModuloComprasion(degree, n, p);
+			if (res)
 			{
-				next_level_data.push_back(root);
+				auto roots = res.value();
+
+				std::lock_guard<std::mutex> guard(m);
+
+				for (const auto& root : roots)
+				{
+					next_level_data.push_back(root);
+				}
 			}
-		}
-	}
+		});
 
 	return next_level_data;
 }
