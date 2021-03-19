@@ -79,17 +79,15 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, 
 		levelData = CalcLevel(levelData, p, degree);
 
 		std::cout << "level = " << level++ << ":";
-		for (auto& val : levelData)
-		{
-			std::cout << " " << val;
-		}
+		for (auto& val : levelData) std::cout << " " << val;
 		std::cout << std::endl;
 
 		auto it = std::find(std::begin(all_levels), std::end(all_levels), levelData);
 		if (it != std::end(all_levels))
 		{
 			std::cout << "—ледующий уровень: ";
-			for (auto& num : levelData) { std::cout << num << " "; }
+			//for (auto& num : levelData) { std::cout << num << " "; }
+			std::copy(std::begin(levelData), std::end(levelData), std::ostream_iterator<cpp_int>{std::cout, " "});
 			std::cout << " €вл€етс€ повторением уровн€ " << std::distance(std::begin(all_levels), it) + 1;
 			return std::nullopt;
 		}
