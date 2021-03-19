@@ -78,7 +78,7 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, 
 
 		levelData = CalcLevel(levelData, p, degree);
 
-		std::cout << "level = " << level++ << ":";
+		std::cout << "level = " << ++level << ":";
 		for (auto& val : levelData) std::cout << " " << val;
 		std::cout << std::endl;
 
@@ -96,17 +96,26 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, 
 		//{
 			//std::cout << "Содержит " << n << ". Проверка уровня:";
 		std::cout << "Проверка уровня:";
-		for (auto& val : levelData)
-		{
-			std::cout << std::endl << "Значение: " << val << std::endl;
-			auto possibleRoot = ToRoot(val, level);
-			possibleRoot = possibleRoot % p;
-			std::cout << std::endl << "Корень: " << possibleRoot;
-			auto checkResult = CheckRoot(g, n, p, possibleRoot);
-			std::cout << std::endl << "Проверка корня: " << (checkResult ? "Подходит" : "Не подходит");
-			if (checkResult) return std::make_optional(possibleRoot);
-			std::cout << std::endl << "--------------------------------";
-		}
+		auto possibleRoot = Pow(2, level) * cpp_int(degree);
+		//possibleRoot = possibleRoot % p;
+		std::cout << std::endl << "Корень: " << possibleRoot;
+		auto checkResult = CheckRoot(g, n, p, possibleRoot);
+		std::cout << std::endl << "Проверка корня: " << (checkResult ? "Подходит" : "Не подходит");
+		if (checkResult) return std::make_optional(possibleRoot);
+		std::cout << std::endl << "--------------------------------";
+		//for (auto& val : levelData)
+		//{
+		//	std::cout << std::endl << "Значение: " << val;
+		//	std::cout << std::endl << "level: " << level << std::endl;
+		//	//std::cout << std::endl << "degree: " << degree << std::endl;
+		//	auto possibleRoot =  Pow(2, level) * cpp_int(degree);
+		//	//possibleRoot = possibleRoot % p;
+		//	std::cout << std::endl << "Корень: " << possibleRoot;
+		//	auto checkResult = CheckRoot(g, n, p, possibleRoot);
+		//	std::cout << std::endl << "Проверка корня: " << (checkResult ? "Подходит" : "Не подходит");
+		//	if (checkResult) return std::make_optional(possibleRoot);
+		//	std::cout << std::endl << "--------------------------------";
+		//}
 
 		std::cout << std::endl;
 		//}

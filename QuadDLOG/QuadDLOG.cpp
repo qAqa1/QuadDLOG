@@ -77,7 +77,8 @@ int main()
 	//auto root = FindRoot(3, 13, 17);
 	//auto root = FindRoot(31, 15, 61);
 	//auto root = FindRoot(27, 520, 547);
-	auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
+	//auto root = FindRoot(27, 520, 1001);
+	auto root = FindRoot(2, 24322, 30203);
 	if (root)
 		std::cout << std::endl << "Корень: " << root.value();
 
