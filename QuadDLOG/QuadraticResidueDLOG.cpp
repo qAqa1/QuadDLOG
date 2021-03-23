@@ -14,7 +14,7 @@ cpp_int ToRoot(cpp_int val, cpp_int twoPow)
 	//cpp_int twoPart = powm(two, twoPow, val);
 	cpp_int twoPart = Pow(two, twoPow);
 	auto primePart = FindBiggestPrimeNumInNum(twoPart, val);
-	std::cout << "Ñòåïåíü äâîéêè: " << twoPart << " Ïðîñòîå ÷èñëî: " << primePart;
+	std::cout << "Ð¡Ñ‚ÐµÐ¿ÐµÐ½ÑŒ Ð´Ð²Ð¾Ð¹ÐºÐ¸: " << twoPart << " ÐŸÑ€Ð¾ÑÑ‚Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾: " << primePart;
 	return twoPart * primePart;
 }
 
@@ -31,8 +31,8 @@ res_container CalcLevel(res_container n_values, cpp_int p, int degree)
 
 	//for (auto& n : n_values)
 	//{
-	//	//std::cout << std::endl << "p â CalcLevel = " << p << std::endl;
-	//	//std::cout << std::endl << "degree â CalcLevel = " << degree << std::endl;
+	//	//std::cout << std::endl << "p Ð² CalcLevel = " << p << std::endl;
+	//	//std::cout << std::endl << "degree Ð² CalcLevel = " << degree << std::endl;
 	//	auto res = ModuloComprasion(degree, n, p);
 	//	if (res)
 	//	{
@@ -85,34 +85,34 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, 
 		auto it = std::find(std::begin(all_levels), std::end(all_levels), levelData);
 		if (it != std::end(all_levels))
 		{
-			std::cout << "Ñëåäóþùèé óðîâåíü: ";
+			std::cout << "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ ÑƒÑ€Ð¾Ð²ÐµÐ½ÑŒ: ";
 			//for (auto& num : levelData) { std::cout << num << " "; }
 			std::copy(std::begin(levelData), std::end(levelData), std::ostream_iterator<cpp_int>{std::cout, " "});
-			std::cout << " ÿâëÿåòñÿ ïîâòîðåíèåì óðîâíÿ " << std::distance(std::begin(all_levels), it) + 1;
+			std::cout << " ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÐµÐ½Ð¸ÐµÐ¼ ÑƒÑ€Ð¾Ð²Ð½Ñ " << std::distance(std::begin(all_levels), it) + 1;
 			return std::nullopt;
 		}
 
 		//if (std::find(std::begin(levelData), std::end(levelData), n) != std::end(levelData))
 		//{
-			//std::cout << "Ñîäåðæèò " << n << ". Ïðîâåðêà óðîâíÿ:";
-		std::cout << "Ïðîâåðêà óðîâíÿ:";
+			//std::cout << "Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ " << n << ". ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° ÑƒÑ€Ð¾Ð²Ð½Ñ:";
+		std::cout << "ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° ÑƒÑ€Ð¾Ð²Ð½Ñ:";
 		auto possibleRoot = Pow(2, level) * cpp_int(degree);
 		//possibleRoot = possibleRoot % p;
-		std::cout << std::endl << "Êîðåíü: " << possibleRoot;
+		std::cout << std::endl << "ÐšÐ¾Ñ€ÐµÐ½ÑŒ: " << possibleRoot;
 		auto checkResult = CheckRoot(g, n, p, possibleRoot);
-		std::cout << std::endl << "Ïðîâåðêà êîðíÿ: " << (checkResult ? "Ïîäõîäèò" : "Íå ïîäõîäèò");
+		std::cout << std::endl << "ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° ÐºÐ¾Ñ€Ð½Ñ: " << (checkResult ? "ÐŸÐ¾Ð´Ñ…Ð¾Ð´Ð¸Ñ‚" : "ÐÐµ Ð¿Ð¾Ð´Ñ…Ð¾Ð´Ð¸Ñ‚");
 		if (checkResult) return std::make_optional(possibleRoot);
 		std::cout << std::endl << "--------------------------------";
 		//for (auto& val : levelData)
 		//{
-		//	std::cout << std::endl << "Çíà÷åíèå: " << val;
+		//	std::cout << std::endl << "Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: " << val;
 		//	std::cout << std::endl << "level: " << level << std::endl;
 		//	//std::cout << std::endl << "degree: " << degree << std::endl;
 		//	auto possibleRoot =  Pow(2, level) * cpp_int(degree);
 		//	//possibleRoot = possibleRoot % p;
-		//	std::cout << std::endl << "Êîðåíü: " << possibleRoot;
+		//	std::cout << std::endl << "ÐšÐ¾Ñ€ÐµÐ½ÑŒ: " << possibleRoot;
 		//	auto checkResult = CheckRoot(g, n, p, possibleRoot);
-		//	std::cout << std::endl << "Ïðîâåðêà êîðíÿ: " << (checkResult ? "Ïîäõîäèò" : "Íå ïîäõîäèò");
+		//	std::cout << std::endl << "ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° ÐºÐ¾Ñ€Ð½Ñ: " << (checkResult ? "ÐŸÐ¾Ð´Ñ…Ð¾Ð´Ð¸Ñ‚" : "ÐÐµ Ð¿Ð¾Ð´Ñ…Ð¾Ð´Ð¸Ñ‚");
 		//	if (checkResult) return std::make_optional(possibleRoot);
 		//	std::cout << std::endl << "--------------------------------";
 		//}
@@ -123,7 +123,7 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int g, 
 		all_levels.push_back(levelData);
 	}
 
-	std::cout << "Êîãäà ñòåïåíü ðàâíà " << degree << ", ïðè n = " << n << " è p = " << p << " íåò êîðíåé";
+	std::cout << "ÐšÐ¾Ð³Ð´Ð° ÑÑ‚ÐµÐ¿ÐµÐ½ÑŒ Ñ€Ð°Ð²Ð½Ð° " << degree << ", Ð¿Ñ€Ð¸ n = " << n << " Ð¸ p = " << p << " Ð½ÐµÑ‚ ÐºÐ¾Ñ€Ð½ÐµÐ¹";
 	return std::nullopt;
 }
 
@@ -136,7 +136,7 @@ std::optional<cpp_int> FindRoot(cpp_int g, cpp_int n, cpp_int p)
 	while (true)
 	{
 		std::cout << "______________________________________________________" << std::endl;
-		std::cout << "Ðàññ÷åò " << prime << " ñòåïåíè:" << std::endl;
+		std::cout << "Ð Ð°ÑÑÑ‡ÐµÑ‚ " << prime << " ÑÑ‚ÐµÐ¿ÐµÐ½Ð¸:" << std::endl;
 		auto possibleRoot = CalcDegree(prime, g, n, p);
 		if (possibleRoot) return possibleRoot;
 		prime = NextPrimeInt(prime);

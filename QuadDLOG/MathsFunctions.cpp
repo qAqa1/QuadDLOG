@@ -67,8 +67,8 @@ cpp_int Math::FindBiggestPrimeNumInNum(cpp_int factor, cpp_int maxValue)
 {
 	//std::cout << "factor = " << factor << ", maxValue = " << maxValue;
 
-	//cpp_int val    = boost::math::lcm(factor, maxValue), // наименьшее общее кратное
-	//cpp_int val    = factor, // наименьшее общее кратное
+	//cpp_int val    = boost::math::lcm(factor, maxValue), // РЅР°РёРјРµРЅСЊС€РµРµ РѕР±С‰РµРµ РєСЂР°С‚РЅРѕРµ
+	//cpp_int val    = factor, // РЅР°РёРјРµРЅСЊС€РµРµ РѕР±С‰РµРµ РєСЂР°С‚РЅРѕРµ
 	//	    preVal = 1;
 
 	//while (true)

@@ -123,7 +123,7 @@ std::vector<Polynomial> FactorSquareFree(const Polynomial& poly, const boost::mu
 
 std::vector<boost::multiprecision::cpp_int> CantorModularComprassion(int n, boost::multiprecision::cpp_int a, boost::multiprecision::cpp_int p)
 {
-    //std::cout << std::endl << "Âûçîâ êàíòîðà: n = " << n << ", a = " << a << " , p = " << p << std::endl;
+    //std::cout << std::endl << "Ð’Ñ‹Ð·Ð¾Ð² ÐºÐ°Ð½Ñ‚Ð¾Ñ€Ð°: n = " << n << ", a = " << a << " , p = " << p << std::endl;
 
     if (a >= p || a < 0)
     {
@@ -137,10 +137,10 @@ std::vector<boost::multiprecision::cpp_int> CantorModularComprassion(int n, boos
     }
 
     //std::cout << std::endl << "a = " << a;
-    //std::cout << std::endl << "Èòîã: n = " << n << ", p - a = " << p - a << " , p = " << p << std::endl;
+    //std::cout << std::endl << "Ð˜Ñ‚Ð¾Ð³: n = " << n << ", p - a = " << p - a << " , p = " << p << std::endl;
     auto roots = CantorCalcModularComprassionRaw(n, p - a, p);
 
-    //std::cout << "Êîðíè: ";
+    //std::cout << "ÐšÐ¾Ñ€Ð½Ð¸: ";
 
     //for (const auto& root : roots)
     //{
@@ -156,7 +156,7 @@ std::vector<boost::multiprecision::cpp_int> CantorCalcModularComprassionRaw(int 
 {
     Polynomial poly(n, a);
 
-    //std::cout << std::endl << "Ïîëèíîì: " << poly << std::endl;
+    //std::cout << std::endl << "ÐŸÐ¾Ð»Ð¸Ð½Ð¾Ð¼: " << poly << std::endl;
 
     std::vector<boost::multiprecision::cpp_int> result;
     std::vector<std::pair<Polynomial, int>> sqrfree = SquareFreeDecomposition(poly, p);

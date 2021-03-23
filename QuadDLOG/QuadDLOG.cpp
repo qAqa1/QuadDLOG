@@ -10,6 +10,8 @@
 
 #include "CantorZassenhaus.h"
 
+#include "windows.h"
+
 //#include <boost/multiprecision/cpp_int.hpp>
 //#include <boost/math/special_functions/prime.hpp>
 //#include <boost/multiprecision/miller_rabin.hpp>
@@ -67,9 +69,17 @@ int main()
 	//auto res = TonelliShanks(5, 61);
 	//Print(res);
 
-	setlocale(LC_ALL, "Russian");
+//	setlocale(LC_ALL, "Russian");
 
 	//auto root = FindRoot(41, 15, 7);
+
+//    SetConsoleCP(1251); //установка кодовой страницы win-cp 1251 в поток ввода
+//    SetConsoleOutputCP(1251); //установка кодовой страницы win-cp 1251 в поток
+
+//    SetConsoleCP(866);
+//    SetConsoleOutputCP(866);
+
+    setlocale(LC_ALL, "ru_RU.UTF-8");
 
 	//auto primePart = FindBiggestPrimeNumInNum(4, 21);
 	//cout << primePart;

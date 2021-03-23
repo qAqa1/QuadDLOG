@@ -341,4 +341,6 @@ healthchecksdb
 
 /out
 /build
+/cmake-build-debug
+
 CMakeSettings.json
