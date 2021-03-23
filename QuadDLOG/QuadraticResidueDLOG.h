@@ -10,5 +10,5 @@ using level_data    = std::vector<res_container>;
 boost::multiprecision::cpp_int ToRoot(boost::multiprecision::cpp_int val, boost::multiprecision::cpp_int twoPow);
 bool CheckRoot(boost::multiprecision::cpp_int g, boost::multiprecision::cpp_int n, boost::multiprecision::cpp_int p, boost::multiprecision::cpp_int root);
 res_container CalcLevel(res_container n_values, boost::multiprecision::cpp_int p, int degree);
-std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree,boost::multiprecision::cpp_int g, boost::multiprecision::cpp_int n, boost::multiprecision::cpp_int p);
-std::optional<boost::multiprecision::cpp_int> FindRoot(boost::multiprecision::cpp_int g, boost::multiprecision::cpp_int n, boost::multiprecision::cpp_int p);
+std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree,boost::multiprecision::cpp_int a, boost::multiprecision::cpp_int b, boost::multiprecision::cpp_int c);
+std::optional<boost::multiprecision::cpp_int> FindRoot(boost::multiprecision::cpp_int a, boost::multiprecision::cpp_int b, boost::multiprecision::cpp_int c);

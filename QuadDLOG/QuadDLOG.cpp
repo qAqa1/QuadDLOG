@@ -83,20 +83,29 @@ int main()
 
 	//auto primePart = FindBiggestPrimeNumInNum(4, 21);
 	//cout << primePart;
-	//auto root = FindRoot(54696545758787, 100001, 70606432933607);
-	//auto root = FindRoot(3, 13, 17);
-	//auto root = FindRoot(31, 15, 61);
-	//auto root = FindRoot(27, 520, 547);
-	//auto root = FindRoot(27, 520, 1001);
-	auto root = FindRoot(2, 24322, 30203);
+//	auto root = FindRoot(54696545758787, 100001, 70606432933607);
+//	auto root = FindRoot(3, 13, 17);
+//	auto root = FindRoot(31, 15, 61);
+//	auto root = FindRoot(27, 520, 547);
+//    auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
+
+//	auto root = FindRoot(2, 24322, 30203); // 1267650600228229401496703205376
+//	auto root = FindRoot(2, 21740, 30323);
+//	auto root = FindRoot(2, 28620, 30539);
+    auto root = FindRoot(5, 30994, 31607);
+
+//	auto root = FindRoot(2, 16190, 30803);
 	if (root)
-		std::cout << std::endl << "Корень: " << root.value();
+		std::cout << std::endl << "Корень: " << *root;
 
-	//auto rez = CantorCalcModularComprassionRaw(3, 4, 7);
+//	auto rez = CantorCalcModularComprassionRaw(3, 4, 7);
 
-	//for (auto num : rez) {
-	//	cout << num << std::endl;
-	//}
+//	auto rez = CantorCalcModularComprassionRaw(3, 28620 , 30539);
+//	auto rez = CantorModularComprassion(3, 28620 , 30539);
+//
+//	for (auto num : rez) {
+//		cout << num << std::endl;
+//	}
 
 
 

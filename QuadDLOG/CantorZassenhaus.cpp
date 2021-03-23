@@ -156,7 +156,7 @@ std::vector<boost::multiprecision::cpp_int> CantorCalcModularComprassionRaw(int 
 {
     Polynomial poly(n, a);
 
-    //std::cout << std::endl << "Полином: " << poly << std::endl;
+//    std::cout << std::endl << "Полином: " << poly << std::endl;
 
     std::vector<boost::multiprecision::cpp_int> result;
     std::vector<std::pair<Polynomial, int>> sqrfree = SquareFreeDecomposition(poly, p);
