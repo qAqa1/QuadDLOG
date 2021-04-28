@@ -22,7 +22,6 @@ roots TonelliShanks(cpp_int n, cpp_int p)
     if (ss == 1)
     {
         cpp_int r1 = powm(n, (p + 1) / 4, p);
-        //return makeSolution(r1, p - r1, true);
         return MAKE_ROOT(r1, p - r1);
     }
 
@@ -38,7 +37,6 @@ roots TonelliShanks(cpp_int n, cpp_int p)
         cpp_int i = 0, zz = t;
         cpp_int b = c, e;
 
-        //if (t == 1) { return makeSolution(r, p - r, true); }
         if (t == 1) { return MAKE_ROOT(r, p - r); }
 
         while (zz != 1 && i < (m - 1))

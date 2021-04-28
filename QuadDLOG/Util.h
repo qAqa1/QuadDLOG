@@ -1,36 +1,42 @@
 #pragma once
 
 #include <boost/multiprecision/cpp_int.hpp>
-#include <optional>
 #include <utility>
 
 #include <iostream>
 #include <string>
+#include <vector>
 
-
-template <typename T>
-std::string ToString(std::vector<T> v);
-
-template <typename T>
-void Print(std::vector<T> v);
-
-template <typename T>
-void PrintLine(std::vector<T> v);
-
-
-template<typename T>
-inline std::string ToString(std::vector<T> v)
+namespace std
 {
-	std::stringstream ss;
-	if (v.size() == 0) return "{}";
-	ss << "{" << v.front();
-	std::for_each(std::begin(v) + 1, std::end(v), [&ss](T val) { ss << ", " << val; });
-	ss << "}";
-	return ss.str();
+    template <typename T>
+    inline ostream& operator<<(ostream& os, const vector<boost::multiprecision::cpp_int> v);
+
+    template <typename T>
+    inline ostream& operator<<(ostream& os, const vector<int> v);
+
+//    template <typename T>
+//    inline string to_string(const vector<T> v);
+}  // namespace std
+
+template <typename T>
+inline std::ostream &operator<<(std::ostream &os, const std::vector<T> v)
+{
+	if (v.size() == 0)
+    {
+	    os << "{}";
+        return os;
+    }
+	os << "{" << v.front();
+	std::for_each(std::begin(v) + 1, std::end(v), [&os](T val) { os << ", " << val; });
+	os << "}";
+	return os;
 }
 
-template<typename T>
-inline void Print(std::vector<T> v) { std::cout << std::endl << ToString(v); }
-
-template<typename T>
-inline void PrintLine(std::vector<T> v) { std::cout << ToString(v); }
+//template <typename T>
+//inline std::string std::to_string(const std::vector<T> v)
+//{
+//    std::stringstream ss;
+//    ss << v;
+//    return ss.str();
+//}

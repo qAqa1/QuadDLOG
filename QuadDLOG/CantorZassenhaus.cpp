@@ -1,10 +1,7 @@
 #include "CantorZassenhaus.h"
 
-#include <algorithm>
 #include <chrono>
 #include <iostream>
-
-#include <boost/multiprecision/cpp_int.hpp>
 
 std::vector<std::pair<Polynomial, int>> SquareFreeDecomposition(const Polynomial& poly, const boost::multiprecision::cpp_int& modp) {
     std::vector<std::pair<Polynomial, int>> result;
@@ -58,8 +55,6 @@ std::vector<std::pair<Polynomial, int>> DistinctDegreeFactorization(const Polyno
 
     return result;
 }
-
-
 
 std::vector<Polynomial> EqualDegreeFactorization(const Polynomial& poly, int degree, const boost::multiprecision::cpp_int& modp) {
     if (static_cast<int>(poly.GetDegree()) == degree) {
@@ -192,4 +187,3 @@ std::vector<std::pair<Polynomial, int>> Factor(const Polynomial& poly, const boo
 
 	return result;
 }
-

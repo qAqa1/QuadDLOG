@@ -1,7 +1,6 @@
 ﻿// QuadDLOG.cpp : Defines the entry point for the application.
 //
 
-#include "QuadDLOG.h"
 #include "TonelliShanks.h"
 #include "Util.h"
 #include "Root.h"
@@ -20,31 +19,10 @@
 //#include <boost/math/tools/polynomial.hpp>
 
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 using namespace Math;
-
-//int PrevPrimeNumTest(int primeNum)
-//{
-//	if (primeNum == 2) return 1;
-//	if (primeNum == 1) return 1;
-//
-//	do
-//	{
-//		primeNum--;
-//	} while (!IsPrime(primeNum));
-//
-//	return primeNum;
-//}
-//
-//int FindBiggestPrimeNumInNumTest(int factor, int maxValue)
-//{
-//	auto del = maxValue / factor;
-//	if (del == 0) return 1;
-//
-//	if (Is)
-//	return PrevPrimeNumTest(del);
-//}
 
 int main()
 {
@@ -80,6 +58,7 @@ int main()
 //    SetConsoleOutputCP(866);
 
     setlocale(LC_ALL, "ru_RU.UTF-8");
+    auto starTimer = chrono::steady_clock::now();
 
 	//auto primePart = FindBiggestPrimeNumInNum(4, 21);
 	//cout << primePart;
@@ -87,8 +66,8 @@ int main()
 //	auto root = FindRoot(3, 13, 17);
 //	auto root = FindRoot(31, 15, 61);
 //	auto root = FindRoot(27, 520, 547);
-//    auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
-	auto root = FindRoot(31, 46, 61);
+    auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
+//	auto root = FindRoot(31, 46, 61);
 
 //	auto root = FindRoot(2, 24322, 30203); // 1267650600228229401496703205376
 //	auto root = FindRoot(2, 21740, 30323);
@@ -96,8 +75,13 @@ int main()
 //    auto root = FindRoot(5, 30994, 31607);
 
 //	auto root = FindRoot(2, 16190, 30803);
+
+    auto endTimer = chrono::steady_clock::now();
+
 	if (root)
 		std::cout << std::endl << "Корень: " << *root;
+
+    cout << endl << endl << "Execution time: " << std::chrono::duration_cast<std::chrono::milliseconds>((endTimer - starTimer)).count() << "ms";
 
 //	auto rez = CantorCalcModularComprassionRaw(3, 4, 7);
 
