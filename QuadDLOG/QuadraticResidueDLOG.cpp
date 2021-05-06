@@ -36,22 +36,23 @@ std::optional<cpp_int> k1;
 cpp_int find_value;
 
 std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int a, cpp_int b, cpp_int c) {
-    std::cout << a << "^x = " << b << "(mod " << c << ")" << std::endl;
+//    std::cout << a << "^x = " << b << "(mod " << c << ")" << std::endl;
 
     cpp_int level = 0;
     level_data all_levels;
     res_container levelData = {b};
 
-    while (!levelData.empty()) {
+    while (!levelData.empty())
+    {
         if (!k1) {
             k1 = degree;
             find_value = powm(a, *k1, c);
-            std::cout << std::endl << "Число для поиска: " << find_value << std::endl;
+            std::cout << "Число для поиска: " << find_value << std::endl;
         }
 
         levelData = CalcLevel(levelData, c, degree);
 
-        std::cout << "level = " << ++level << ":";
+        std::cout << "Степень вычета = " << ++level << ":";
         for (auto &val : levelData) std::cout << " " << val;
         std::cout << std::endl;
 
@@ -71,14 +72,14 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int a, 
             auto checkResult = CheckRoot(a, b, c, possibleRoot);
             std::cout << std::endl << "Проверка корня: " << (checkResult ? "Подходит" : "Не подходит");
             if (checkResult) return std::make_optional(possibleRoot);
-            std::cout << std::endl << "--------------------------------";
-            std::cout << std::endl;
+//            std::cout << std::endl << "--------------------------------";
+//            std::cout << std::endl;
         }
 
         all_levels.push_back(levelData);
     }
 
-    std::cout << "Когда степень равна " << degree << ", при b = " << b << " и p = " << c << " нет корней";
+    std::cout << "Когда степень равна " << degree << ", при b = " << b << " и p = " << c << " нет корней" << std::endl;
     return std::nullopt;
 }
 
@@ -89,13 +90,15 @@ std::optional<cpp_int> FindRoot(cpp_int a, cpp_int b, cpp_int c) {
 
     int prime = 2;
 
-    while (true) {
-        std::cout << "______________________________________________________" << std::endl;
+    while (true)
+    {
+//        std::cout << "______________________________________________________" << std::endl;
+//        std::cout << "Рассчет " << prime << " степени:" << std::endl;
         std::cout << "Рассчет " << prime << " степени:" << std::endl;
         auto possibleRoot = CalcDegree(prime, a, b, c);
         if (possibleRoot) return possibleRoot;
         prime = NextPrimeInt(prime);
-        std::cout << std::endl << std::endl;
+//        std::cout << std::endl << std::endl;
     }
 
 //	return CalcDegree(3, a, b, c);
