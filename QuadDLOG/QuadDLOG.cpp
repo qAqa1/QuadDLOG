@@ -66,7 +66,7 @@ int main()
 //	auto root = FindRoot(3, 13, 17);
 //	auto root = FindRoot(31, 15, 61);
 //	auto root = FindRoot(27, 520, 547);
-    auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
+//    auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
 //	auto root = FindRoot(31, 46, 61);
 
 //	auto root = FindRoot(2, 24322, 30203); // 1267650600228229401496703205376
@@ -75,6 +75,7 @@ int main()
 //    auto root = FindRoot(5, 30994, 31607);
 
 //	auto root = FindRoot(2, 16190, 30803);
+	auto root = FindRoot(13, 10, 9973);
 
     auto endTimer = chrono::steady_clock::now();
 

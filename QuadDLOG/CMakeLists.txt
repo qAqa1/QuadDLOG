@@ -13,7 +13,6 @@ message(${Boost_INCLUDE_DIRS})
 
 # Add source to this project's executable.
 add_executable (QuadDLOG
-"QuadDLOG.h"
 "QuadDLOG.cpp"
 "TonelliShanks.h"
 "TonelliShanks.cpp"

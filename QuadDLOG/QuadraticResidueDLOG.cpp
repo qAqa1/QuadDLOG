@@ -66,7 +66,7 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int a, 
         if (std::find(std::begin(levelData), std::end(levelData), find_value) != std::end(levelData))
         {
             std::cout << "Содержит " << find_value << ". Проверка уровня:";
-            auto possibleRoot = *k1 * Pow(degree, level);
+            auto possibleRoot = (*k1 * Pow(degree, level)) % (c - 1);
             std::cout << std::endl << "Корень: " << possibleRoot;
             auto checkResult = CheckRoot(a, b, c, possibleRoot);
             std::cout << std::endl << "Проверка корня: " << (checkResult ? "Подходит" : "Не подходит");
