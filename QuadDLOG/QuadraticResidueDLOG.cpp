@@ -33,21 +33,22 @@ res_container CalcLevel(res_container n_values, cpp_int p, int degree)
 }
 
 std::optional<cpp_int> k1;
-cpp_int find_value;
+cpp_int findValue;
 
 std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int a, cpp_int b, cpp_int c) {
 //    std::cout << a << "^x = " << b << "(mod " << c << ")" << std::endl;
 
     cpp_int level = 0;
-    level_data all_levels;
+    level_data allLevels;
     res_container levelData = {b};
 
     while (!levelData.empty())
     {
-        if (!k1) {
+        if (!k1)
+        {
             k1 = degree;
-            find_value = powm(a, *k1, c);
-            std::cout << "Число для поиска: " << find_value << std::endl;
+            findValue = powm(a, *k1, c);
+            std::cout << "Число для поиска: " << findValue << std::endl;
         }
 
         levelData = CalcLevel(levelData, c, degree);
@@ -56,17 +57,18 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int a, 
         for (auto &val : levelData) std::cout << " " << val;
         std::cout << std::endl;
 
-        auto it = std::find(std::begin(all_levels), std::end(all_levels), levelData);
-        if (it != std::end(all_levels)) {
+        auto it = std::find(std::begin(allLevels), std::end(allLevels), levelData);
+        if (it != std::end(allLevels))
+        {
             std::cout << "Следующий уровень: ";
             std::copy(std::begin(levelData), std::end(levelData), std::ostream_iterator<cpp_int>{std::cout, " "});
-            std::cout << " является повторением уровня " << std::distance(std::begin(all_levels), it) + 1;
+            std::cout << " является повторением уровня " << std::distance(std::begin(allLevels), it) + 1;
             return std::nullopt;
         }
 
-        if (std::find(std::begin(levelData), std::end(levelData), find_value) != std::end(levelData))
+        if (std::find(std::begin(levelData), std::end(levelData), findValue) != std::end(levelData))
         {
-            std::cout << "Содержит " << find_value << ". Проверка уровня:";
+            std::cout << "Содержит " << findValue << ". Проверка уровня:";
             auto possibleRoot = (*k1 * Pow(degree, level)) % (c - 1);
             std::cout << std::endl << "Корень: " << possibleRoot;
             auto checkResult = CheckRoot(a, b, c, possibleRoot);
@@ -76,14 +78,15 @@ std::optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int a, 
 //            std::cout << std::endl;
         }
 
-        all_levels.push_back(levelData);
+        allLevels.push_back(levelData);
     }
 
     std::cout << "Когда степень равна " << degree << ", при b = " << b << " и p = " << c << " нет корней" << std::endl;
     return std::nullopt;
 }
 
-std::optional<cpp_int> FindRoot(cpp_int a, cpp_int b, cpp_int c) {
+std::optional<cpp_int> FindRoot(cpp_int a, cpp_int b, cpp_int c)
+{
     k1 = std::nullopt;
 
     std::cout << a << "^x = " << b << "(mod " << c << ")" << std::endl;
