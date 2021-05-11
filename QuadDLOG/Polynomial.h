@@ -2,11 +2,8 @@
 
 // https://github.com/stormtrooper1859/CantorZassenhaus
 
-#include <cstdlib>
 #include <vector>
-#include <cstdint>
 #include <string>
-#include <algorithm>
 
 #include <boost/multiprecision/cpp_int.hpp>
 

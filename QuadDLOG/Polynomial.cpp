@@ -66,7 +66,7 @@ Polynomial::Polynomial(int n, boost::multiprecision::cpp_int a)
 
 void Polynomial::Prune()
 {
-	for (int i = this->coeff.size(); i > 0 && this->coeff.back() == 0; i--)
+	for (int i = static_cast<int>(this->coeff.size()); i > 0 && this->coeff.back() == 0; i--)
 	{
 		this->coeff.pop_back();
 	}
@@ -79,7 +79,7 @@ size_t Polynomial::GetDegree() const
 
 std::string Polynomial::ToString(std::string default_variable_name) const
 {
-	int degree = this->coeff.size() - 1;
+	int degree = static_cast<int>(this->coeff.size() - 1);
 	std::stringstream result;
 
 	for (int i = degree; i >= 0; i--)
@@ -198,7 +198,7 @@ std::pair< Polynomial, Polynomial> Polynomial::DivInternal(const Polynomial& a, 
 	boost::multiprecision::cpp_int bl = b.coeff.back();
 	Polynomial b2 = b.Normalize(modp);
 
-	int degree_of_result = a.GetDegree() - b.GetDegree() + 1;
+	int degree_of_result = static_cast<int>(a.GetDegree() - b.GetDegree() + 1);
 
 	if (degree_of_result < 1) return { Polynomial({}), a };
 
