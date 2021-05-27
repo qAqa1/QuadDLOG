@@ -4,92 +4,58 @@
 #include "QuadraticResidueDLOG.h"
 
 #include <chrono>
+#include <tuple>
 
 using namespace std;
+using namespace boost::multiprecision;
 
-int main()
+optional<tuple<cpp_int, cpp_int, cpp_int>> InputDiscreteLogarithm(vector<string> commandLineArgs)
 {
-//	setlocale(LC_ALL, "Russian");
+    cpp_int a, b, c;
 
-	//auto root = FindRoot(41, 15, 7);
+    if (commandLineArgs.empty())
+    {
+        cout << "a^x = b(mod c)" << endl;
+        cout << "a=";
+        cin >> a;
+        cout << "b=";
+        cin >> b;
+        cout << "c=";
+        cin >> c;
 
-//    SetConsoleCP(1251); //установка кодовой страницы win-cp 1251 в поток ввода
-//    SetConsoleOutputCP(1251); //установка кодовой страницы win-cp 1251 в поток
+        return make_optional(make_tuple(a, b, c));
+    }
 
-//    SetConsoleCP(866);
-//    SetConsoleOutputCP(866);
+    if (commandLineArgs.size() == 3)
+    {
+        a = cpp_int(commandLineArgs[0]);
+        b = cpp_int(commandLineArgs[1]);
+        c = cpp_int(commandLineArgs[2]);
+        return make_optional(make_tuple(a, b, c));
+    }
 
+    cout << "error args count, must 3: a b c; a^x = b(mod c)";
+    return std::nullopt;
+}
+
+int main(int argc, char * argv[])
+{
     setlocale(LC_ALL, "ru_RU.UTF-8");
+
+    vector<string> commandLineArgs;
+    for (int i = 1; i < argc; i++) commandLineArgs.emplace_back(argv[i]);
+
+    auto input = InputDiscreteLogarithm(commandLineArgs);
+    if (!input) exit(1);
+    const auto& [a, b, c] = *input;
+
     auto starTimer = chrono::steady_clock::now();
 
-	//auto primePart = FindBiggestPrimeNumInNum(4, 21);
-	//cout << primePart;
-//	auto root = FindRoot(54696545758787, 100001, 70606432933607);
-//	auto root = FindRoot(3, 13, 17);
-//	auto root = FindRoot(31, 15, 61);
-//	auto root = FindRoot(27, 520, 547);
-    auto root = FindRoot(10, 64, 107); // 20 или 562949953421312
-//	auto root = FindRoot(31, 46, 61);
-
-//	auto root = FindRoot(2, 24322, 30203); // 1267650600228229401496703205376
-//	auto root = FindRoot(2, 21740, 30323);
-//	auto root = FindRoot(2, 28620, 30539);
-//    auto root = FindRoot(5, 30994, 31607);
-
-//	auto root = FindRoot(2, 16190, 30803);
-//	auto root = FindRoot(13, 10, 9973);
-
+    auto root = FindRoot(a, b, c);
     auto endTimer = chrono::steady_clock::now();
-
-	if (root)
-		std::cout << std::endl << "Корень: " << *root;
-
+    if (root)
+        std::cout << std::endl << "Корень: " << *root;
     cout << endl << endl << "Execution time: " << std::chrono::duration_cast<std::chrono::milliseconds>((endTimer - starTimer)).count() << "ms";
-
-//	auto rez = CantorCalcModularComprassionRaw(3, 4, 7);
-
-//	auto rez = CantorCalcModularComprassionRaw(3, 28620 , 30539);
-//	auto rez = CantorModularComprassion(3, 28620 , 30539);
-//
-//	for (auto num : rez) {
-//		cout << num << std::endl;
-//	}
-
-	//Polynomial p1 = Polynomial("x^12+x^11+2x^9+2x^8+2x^6+x^5+2x^4+2x^3");
-
-	//std::cout << p1.DebugDescription();
-
-	//auto rez = Factor(p1, 61);
-
-	//for (auto p : rez) {
-	//	cout << p.second << " " << p.first << " | " << p.first.DebugDescription() << endl;
-	//}
-
-	//int a = 15;
-
-	//auto rez = CantorModularComprassionRaw(2, a, 61);
-
-	//for (auto num : rez) {
-	//	cout << num << std::endl;
-	//}
-
-	//std::cout << "---------------";
-
-	//auto res = TonelliShanks(a, 61);
-	//Print(res);
-
-	//std::cout << ToRoot(2, 5) << std::endl;
-	//std::cout << "end";
-
-	//std::cout << boost::multiprecision::powm(boost::multiprecision::cpp_int(2), boost::multiprecision::cpp_int(10), boost::multiprecision::cpp_int(5)) << std::endl;
-	//std::cout << "end";
-	//system("pause");
-
-	//auto val = Math::FindBiggestPrimeNumInNum(3, 100);
-	//auto val = Math::NextPrimeNum(7);
-	//std::cout << val << std::endl;
-	//std::cout << "end";
-	////system("pause");
 
 	return 0;
 }

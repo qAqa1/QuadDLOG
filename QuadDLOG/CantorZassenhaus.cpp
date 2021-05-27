@@ -118,8 +118,6 @@ std::vector<Polynomial> FactorSquareFree(const Polynomial& poly, const boost::mu
 
 std::vector<boost::multiprecision::cpp_int> CantorModularComprassion(int n, boost::multiprecision::cpp_int a, boost::multiprecision::cpp_int p)
 {
-    //std::cout << std::endl << "Вызов кантора: n = " << n << ", a = " << a << " , p = " << p << std::endl;
-
     if (a >= p || a < 0)
     {
         auto modWithNegative = [](boost::multiprecision::cpp_int a, boost::multiprecision::cpp_int b)
@@ -131,18 +129,7 @@ std::vector<boost::multiprecision::cpp_int> CantorModularComprassion(int n, boos
         a = modWithNegative(a, p);
     }
 
-    //std::cout << std::endl << "a = " << a;
-    //std::cout << std::endl << "Итог: n = " << n << ", p - a = " << p - a << " , p = " << p << std::endl;
     auto roots = CantorCalcModularComprassionRaw(n, p - a, p);
-
-    //std::cout << "Корни: ";
-
-    //for (const auto& root : roots)
-    //{
-    //    std::cout << root << ", ";
-    //}
-
-    //std::cout << std::endl;
 
     return CantorCalcModularComprassionRaw(n, p - a, p);
 }
