@@ -63,7 +63,7 @@ optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int a, cpp_i
         {
             cout << "Следующий уровень: ";
             copy(begin(levelData), end(levelData), ostream_iterator<cpp_int>{cout, " "});
-            cout << " является повторением уровня " << distance(begin(allLevels), it) + 1;
+            cout << "является повторением уровня " << distance(begin(allLevels), it) + 1 << endl;
             return nullopt;
         }
 
