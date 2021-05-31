@@ -92,7 +92,7 @@ optional<cpp_int> FindRoot(cpp_int a, cpp_int b, cpp_int c)
 
     while (true)
     {
-        cout << "Рассчет " << prime << " степени:" << endl;
+        cout << "Расчёт " << prime << " степени:" << endl;
         auto possibleRoot = CalcDegree(prime, a, b, c);
         if (possibleRoot) return possibleRoot;
         prime = NextPrimeInt(prime);
