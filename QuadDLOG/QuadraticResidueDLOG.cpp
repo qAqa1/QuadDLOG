@@ -20,7 +20,7 @@ res_container CalcLevel(res_container n_values, cpp_int p, int degree)
 {
     res_container next_level_data;
 
-	for_each(execution::par, begin(n_values), end(n_values), [&](boost::multiprecision::cpp_int n)
+	for_each(execution::par, begin(n_values), end(n_values), [&](cpp_int n)
 		{
 			auto res = ModuloComprasion(degree, n, p);
 			if (res)
@@ -37,7 +37,7 @@ res_container CalcLevel(res_container n_values, cpp_int p, int degree)
 optional<cpp_int> k1;
 cpp_int findValue;
 
-optional<boost::multiprecision::cpp_int> CalcDegree(int degree, cpp_int a, cpp_int b, cpp_int c)
+optional<cpp_int> CalcDegree(int degree, cpp_int a, cpp_int b, cpp_int c)
 {
     cpp_int level = 0;
     level_data allLevels;
